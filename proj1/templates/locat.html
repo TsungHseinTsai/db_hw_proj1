@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>proj1</title>
+	<script type="text/javascript">
+        function myCheck()
+        {
+           for(var i=0;i<document.form1.elements.length-1;i++)
+           {
+              if(document.form1.elements[i].value=="")
+              {
+                 alert("当前表单不能有空项");
+                 document.form1.elements[i].focus();
+                 return false;
+              }
+           }
+           return true;
+          
+        }
+    </script>
+</head>
+<body>
+    <h1>Return Location</h1>
+
+    <form name = form1 action="/received/" method="post" onSubmit="return myCheck()">
+		{% csrf_token %}
+		<p>Title: <input type="text" name="Title"></p>
+        <p>X_position: <input type="text" name="Xpos"></p>
+        <p>Y_position: <input type="text" name="Ypos"></p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
